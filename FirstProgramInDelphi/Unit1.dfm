@@ -11,22 +11,69 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 320
-    Top = 64
-    Width = 59
+    Left = 96
+    Top = 226
+    Width = 31
     Height = 13
     Caption = 'Label1'
   end
-  object Button1: TButton
-    Left = 304
-    Top = 120
+  object Label2: TLabel
+    Left = 96
+    Top = 256
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 96
+    Top = 288
+    Width = 31
+    Height = 13
+    Caption = 'Label3'
+  end
+  object Label4: TLabel
+    Left = 96
+    Top = 320
+    Width = 31
+    Height = 13
+    Caption = 'Label4'
+  end
+  object LoadButton: TButton
+    Left = 96
+    Top = 360
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Load File'
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = LoadButtonClick
+  end
+  object MemoBox: TMemo
+    Left = 96
+    Top = 43
+    Width = 299
+    Height = 161
+    Lines.Strings = (
+      'MemoBox')
+    TabOrder = 1
+  end
+  object SaveButton: TButton
+    Left = 208
+    Top = 360
+    Width = 75
+    Height = 25
+    Caption = 'Save File'
+    TabOrder = 2
+  end
+  object CorrectButton: TButton
+    Left = 336
+    Top = 360
+    Width = 75
+    Height = 25
+    Caption = 'Correct'
+    TabOrder = 3
   end
 end

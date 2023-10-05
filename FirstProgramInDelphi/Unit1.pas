@@ -8,25 +8,82 @@ uses
 
 type
   TForm1 = class(TForm)
-    Button1: TButton;
+    LoadButton: TButton;
     Label1: TLabel;
-    procedure Button1Click(Sender: TObject);
+    MemoBox: TMemo;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    SaveButton: TButton;
+    CorrectButton: TButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure LoadButtonClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
   end;
 
-var
+var                // globals
   Form1: TForm1;
+  fileName : String;
+  fileData : TStringList;
+  openDialog : TOpenDialog;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.Button1Click(Sender: TObject);
+
+procedure TForm1.FormCreate(Sender: TObject);
+
+
+
 begin
-     Label1.Caption := 'Hello World!';
+
+// Set the title of the form - our application title
+   Form1.Caption := 'Very simple spell corrector';
+
+  // Disable all except the load file button
+   SaveButton.Enabled    := false;
+   CorrectButton.Enabled := false;
+
+  // Clear the file display box
+   MemoBox.Clear;
+
+  // Enable scroll bars for this memo box - this allows us to scroll up
+  // and down and left and right to see all the text
+   MemoBox.ScrollBars := ssBoth;
+
+  // Do not allow the user to directly type into the displayed file text
+   MemoBox.ReadOnly := true;
+
+  // Set the font of the memo box to a mono-spaced one to ease reading
+   MemoBox.Font.Name := 'Courier New';
+
+  // Set all of the labels to blank
+   Label1.Caption := '';
+   Label2.Caption := '';
+   Label3.Caption := '';
+   Label4.Caption := '';
+
+  // Create the open dialog object - used by the GetTextFile routine
+    openDialog := TOpenDialog.Create(self);
+
+  // Ask for only files that exist
+    openDialog.Options := [ofFileMustExist];
+
+  // Ask only for text files
+    openDialog.Filter := 'Text files|*.txt';
+
+
+    end;
+procedure TForm1.LoadButtonClick(Sender: TObject);
+begin
+// Display the file selection dialog
+   if openDialog.Execute then       // Did the user select a file?
 end;
 
 end.
+
